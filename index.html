@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30 Ans de Mariage - Sylviane & ?</title>
+    <title>30 Ans de Mariage - Sylviane & JM</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
         
@@ -192,8 +192,11 @@
         footer {
             text-align: center;
             margin-top: 60px;
-            color: #777;
-            font-size: 0.9rem;
+            color: #555; /* Couleur plus foncée pour un meilleur contraste */
+            font-size: 1.1rem; /* Taille de police augmentée */
+            font-weight: 500; /* Police légèrement plus grasse */
+            padding: 20px 0; /* Plus d'espace vertical */
+            line-height: 1.8; /* Augmentation de l'espacement des lignes */
         }
         
         @media (max-width: 768px) {
@@ -210,6 +213,29 @@
                 flex-direction: column;
                 align-items: center;
             }
+        }
+        
+        .future-item {
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px auto 0;
+        }
+        
+        .question-mark {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            font-size: 120px;
+            color: #bd9b60;
+            font-weight: bold;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -238,10 +264,7 @@
     <div class="details">
         <h2>Quand & Où</h2>
         <p>Le samedi 5 juillet à 13h</p>
-        <p>à l'Horme</p>
-        <div class="warning">
-            ⚠️ Aucune excuse ne sera acceptée : pas d'arguments bidons !
-        </div>
+        <p><a href="https://maps.app.goo.gl/8a2WcGoR2Z7GW4P9A" target="_blank" style="color: white; text-decoration: underline;">Place de l'église, à l'Horme</a></p>
     </div>
     
     <div class="family-journey">
@@ -249,29 +272,33 @@
         <div class="journey-items">
             <div class="journey-item">
                 <img src="fabio.jpeg" alt="Premier enfant" class="journey-photo">
-                <div class="journey-title">Premier enfant</div>
+                <div class="journey-title">2000: Naissance de Fabio</div>
             </div>
             <div class="journey-item">
                 <img src="mathis.jpeg" alt="Deuxième enfant" class="journey-photo">
-                <div class="journey-title">Deuxième enfant</div>
+                <div class="journey-title">2002: Naissance de Mathis</div>
             </div>
             <div class="journey-item">
                 <img src="poules.jpeg" alt="Nos 4 poules" class="journey-photo">
-                <div class="journey-title">Nos enfants préférés</div>
+                <div class="journey-title">2024: Naissance des poules</div>
             </div>
         </div>
+        <div class="journey-item future-item">
+            <div class="question-mark">?</div>
+            <div class="journey-title">À quand les petits enfants ?</div>
+        </div>
     </div>
-    
+    <footer>
+        <p>Mariage → 2 enfants → 2 belles-filles → 4 poules</p>
+        <p>On attend la suite...</p>
+    </footer>
     <div class="rsvp">
         <h2>Vous joindrez-vous à nous ?</h2>
         <p>👉 RSVP avant le 1er mai – qu'on sache combien de kilos de nourriture on doit prévoir !</p>
         <a target="_blank" href="https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAASgyZzBUOTU1RE8xQlIwWEtOTFdCSFhBTktRTEFRVi4u&origin=lprLink&route=shorturl" class="rsvp-btn">Répondre à l'invitation</a>
-        <p class="small" style="margin-top: 10px;">(Cliquer sur le lien pour donner votre réponse)</p>
+        <p class="small" style="margin-top: 10px; font-weight: 700;">(Cliquer sur le lien pour donner votre réponse)</p>
     </div>
     
-    <footer>
-        <p>Mariage → 2 enfants → 2 belles-filles → 4 poules</p>
-        <p>Et ça continue !</p>
-    </footer>
+
 </body>
 </html>
