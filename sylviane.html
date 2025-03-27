@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Ans de Mariage - Sylviane & ?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f7f0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        .years {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .year {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #bd9b60;
+        }
+        
+        .separator {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #bd9b60, transparent);
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #bd9b60;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(189, 155, 96, 0.5);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(189, 155, 96, 0.8);
+            }
+        }
+        
+        .photo-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .wedding-photo {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .wedding-photo:hover {
+            transform: scale(1.05);
+        }
+        
+        .message {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            color: #bd9b60;
+            font-weight: 600;
+        }
+        
+        .details {
+            background-color: #bd9b60;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .details h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .family-journey {
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .family-journey h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #bd9b60;
+            margin-bottom: 30px;
+        }
+        
+        .journey-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .journey-item {
+            width: 250px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .journey-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+        }
+        
+        .journey-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .rsvp {
+            background-color: #e9ecef;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .rsvp-btn {
+            display: inline-block;
+            background-color: #bd9b60;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .rsvp-btn:hover {
+            background-color: #a58449;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .wedding-photo {
+                width: 250px;
+                height: 330px;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .journey-items {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="years">
+            <div class="year">1995</div>
+            <div class="separator"></div>
+            <div class="year">2025</div>
+        </div>
+        <h1>30 Ans de Mariage... On y croit à peine nous-mêmes ! 🎉</h1>
+    </div>
+    
+    <div class="photo-gallery">
+        <img src="mariage1.png" alt="Photo de mariage 1995" class="wedding-photo">
+        <img src="mariage2.png" alt="Photo de mariage 1995" class="wedding-photo">
+    </div>
+    
+    <div class="message">
+        <p>Il paraît que ça se fête ! 🎉</p>
+        <p>Qui aurait parié qu'on tiendrait <span class="highlight">30 ans</span> ? Et pourtant...</p>
+        <p>Contre toute attente... <span class="highlight">Nous l'avons fait !</span></p>
+        <p>Venez lever votre verre à notre endurance légendaire et partager une belle journée</p>
+    </div>
+    
+    <div class="details">
+        <h2>Quand & Où</h2>
+        <p>Le samedi 5 juillet à 13h</p>
+        <p>à l'Horme</p>
+        <div class="warning">
+            ⚠️ Aucune excuse ne sera acceptée : pas d'arguments bidons !
+        </div>
+    </div>
+    
+    <div class="family-journey">
+        <h2>Notre incroyable aventure</h2>
+        <div class="journey-items">
+            <div class="journey-item">
+                <img src="fabio.jpeg" alt="Premier enfant" class="journey-photo">
+                <div class="journey-title">Premier enfant</div>
+            </div>
+            <div class="journey-item">
+                <img src="mathis.jpeg" alt="Deuxième enfant" class="journey-photo">
+                <div class="journey-title">Deuxième enfant</div>
+            </div>
+            <div class="journey-item">
+                <img src="poules.jpeg" alt="Nos 4 poules" class="journey-photo">
+                <div class="journey-title">Nos enfants préférés</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="rsvp">
+        <h2>Vous joindrez-vous à nous ?</h2>
+        <p>👉 RSVP avant le 1er mai – qu'on sache combien de kilos de nourriture on doit prévoir !</p>
+        <a target="_blank" href="https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAASgyZzBUOTU1RE8xQlIwWEtOTFdCSFhBTktRTEFRVi4u&origin=lprLink&route=shorturl" class="rsvp-btn">Répondre à l'invitation</a>
+        <p class="small" style="margin-top: 10px;">(Cliquer sur le lien pour donner votre réponse)</p>
+    </div>
+    
+    <footer>
+        <p>Mariage → 2 enfants → 2 belles-filles → 4 poules</p>
+        <p>Et ça continue !</p>
+    </footer>
+</body>
+</html>
