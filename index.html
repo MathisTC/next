@@ -75,7 +75,7 @@
         }
         
         .wedding-photo {
-            width: 300px;
+            width: 550px;
             height: 400px;
             object-fit: cover;
             border-radius: 10px;
@@ -85,6 +85,34 @@
         
         .wedding-photo:hover {
             transform: scale(1.05);
+        }
+        
+        @media (max-width: 1130px) {
+            .photo-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .wedding-photo {
+                width: 100%;
+                max-width: 550px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .wedding-photo {
+                width: 90%;
+                height: 330px;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .journey-items {
+                flex-direction: column;
+                align-items: center;
+            }
         }
         
         .message {
@@ -199,22 +227,6 @@
             line-height: 1.8; /* Augmentation de l'espacement des lignes */
         }
         
-        @media (max-width: 768px) {
-            .wedding-photo {
-                width: 250px;
-                height: 330px;
-            }
-            
-            h1 {
-                font-size: 3rem;
-            }
-            
-            .journey-items {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        
         .future-item {
             width: 250px;
             display: flex;
@@ -237,6 +249,48 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             margin-bottom: 15px;
         }
+
+        /* Animation styles for hearts and confetti */
+        .heart, .confetti {
+            position: fixed;
+            z-index: 100;
+            pointer-events: none;
+            animation-timing-function: ease-in-out;
+        }
+        
+        .heart {
+            font-size: 24px;
+            animation: float 4s linear forwards;
+        }
+        
+        .confetti {
+            width: 10px;
+            height: 10px;
+            border-radius: 0;
+            animation: confettiFall 4s linear forwards;
+        }
+        
+        @keyframes float {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -251,7 +305,7 @@
     
     <div class="photo-gallery">
         <img src="mariage1.png" alt="Photo de mariage 1995" class="wedding-photo">
-        <img src="mariage2.png" alt="Photo de mariage 1995" class="wedding-photo">
+        <img src="mariage2.jpg" alt="Photo de mariage 1995" class="wedding-photo">
     </div>
     
     <div class="message">
@@ -275,7 +329,7 @@
                 <div class="journey-title">2000: Naissance de Fabio</div>
             </div>
             <div class="journey-item">
-                <img src="mathis.jpeg" alt="Deuxième enfant" class="journey-photo">
+                <img src="mathis.jpg" alt="Deuxième enfant" class="journey-photo">
                 <div class="journey-title">2002: Naissance de Mathis</div>
             </div>
             <div class="journey-item">
@@ -299,6 +353,100 @@
         <p class="small" style="margin-top: 10px; font-weight: 700;">(Cliquer sur le lien pour donner votre réponse)</p>
     </div>
     
-
+    <script>
+        // Heart and confetti animation
+        function createHearts(count, startX, startY) {
+            const hearts = ['❤️', '💖', '💘', '💓', '💕', '💗', '💝'];
+            
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                
+                // Set position
+                const x = startX ? startX + (Math.random() * 100 - 50) : Math.random() * window.innerWidth;
+                const y = startY ? startY + (Math.random() * 100 - 50) : Math.random() * window.innerHeight;
+                
+                heart.style.left = `${x}px`;
+                heart.style.top = `${y}px`;
+                
+                // Random duration for variety
+                const duration = 3 + Math.random() * 3;
+                heart.style.animationDuration = `${duration}s`;
+                
+                document.body.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            }
+        }
+        
+        function createConfetti(count, startX, startY) {
+            const colors = ['#fd6c6c', '#fffc7f', '#7fff7f', '#7fffff', '#7f7fff', '#ff7fff'];
+            
+            for (let i = 0; i < count; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Random color
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random shape
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '50%';
+                } else {
+                    confetti.style.borderRadius = '0';
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                }
+                
+                // Set position
+                const x = startX ? startX + (Math.random() * 100 - 50) : Math.random() * window.innerWidth;
+                const y = startY ? startY + (Math.random() * 100 - 50) : Math.random() * window.innerHeight;
+                
+                confetti.style.left = `${x}px`;
+                confetti.style.top = `${y}px`;
+                
+                // Random duration for variety
+                const duration = 3 + Math.random() * 3;
+                confetti.style.animationDuration = `${duration}s`;
+                
+                document.body.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000);
+            }
+        }
+        
+        // Run animations on page load
+        window.addEventListener('load', () => {
+            createConfetti(200);
+            
+            // Add special message for Mathis's photo
+            document.querySelector('img[src="mathis.jpg"]').addEventListener('click', function(e) {
+                alert("C'est moi qui ai fait le site, si tu vois ce message, j'espère que tu vas bien");
+                
+                // Still create the confetti effect
+                const rect = e.target.getBoundingClientRect();
+                const x = e.clientX || (rect.left + rect.width/2);
+                const y = e.clientY || (rect.top + rect.height/2);
+            });
+        });
+        
+        // Add click handlers to wedding photos
+        document.querySelectorAll('.wedding-photo').forEach(photo => {
+            photo.addEventListener('click', (e) => {
+                // Get click position
+                const rect = e.target.getBoundingClientRect();
+                const x = e.clientX || (rect.left + rect.width/2 -50);
+                const y = e.clientY || (rect.top + rect.height/2 + 50);
+                
+                createHearts(50, x, y);
+            });
+        });
+    </script>
 </body>
 </html>
