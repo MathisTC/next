@@ -70,6 +70,25 @@ body.study-mode .app-footer { display:none; }
 .study-extra-controls { margin-top:1rem; display:flex; gap:.75rem; }
 @media (max-width:700px){ .study-extra-controls { flex-wrap:wrap; } }
 
+/* QCM */
+.hidden { display:none !important; }
+#qcm-container { width:min(780px,100%); margin-top:1.25rem; display:flex; flex-direction:column; gap:1rem; background:#1c1f22; border:1px solid #30363d; border-radius:var(--radius); padding:1.25rem 1.25rem 1.4rem; box-shadow:0 4px 14px -6px rgba(0,0,0,.55); }
+#qcm-container .qcm-question { font-size:1.15rem; font-weight:600; line-height:1.35; }
+#qcm-container .qcm-choices { display:flex; flex-direction:column; gap:.6rem; }
+#qcm-container .choice { position:relative; display:flex; align-items:flex-start; gap:.6rem; padding:.75rem .85rem; background:linear-gradient(145deg,#202428,#1c1f23); border:1px solid #2d3237; border-radius:10px; cursor:pointer; transition:background var(--transition), border-color var(--transition), box-shadow var(--transition); }
+#qcm-container .choice:hover { background:#262b30; }
+#qcm-container .choice input { margin-top:.2rem; accent-color:var(--accent); }
+#qcm-container .choice.correct { border-color:#2d6a31; background:linear-gradient(145deg,#1f3a23,#1d251f); }
+#qcm-container .choice.correct:after { content:'✔'; position:absolute; top:8px; right:10px; color:#6edb66; font-size:.9rem; }
+#qcm-container .choice.incorrect { border-color:#7a2628; background:linear-gradient(145deg,#3a1f1f,#241d1d); }
+#qcm-container .choice.incorrect:after { content:'✖'; position:absolute; top:8px; right:10px; color:#ff6b6e; font-size:.9rem; }
+#qcm-container .choice.disabled { opacity:.6; cursor:default; }
+.qcm-actions { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+#qcm-feedback { font-size:.85rem; min-height:1.2rem; font-weight:600; letter-spacing:.05em; }
+#qcm-feedback.good { color:#6edb66; }
+#qcm-feedback.bad { color:#ff6b6e; }
+body.study-mode #qcm-container { margin-top:2rem; }
+
 /* Card */
 .flashcard-panel { grid-column:1 / -1; display:flex; flex-direction:column; align-items:center; }
 #card-container { width: min(680px, 90%); height: 340px; perspective:1600px; position:relative; }

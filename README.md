@@ -1,22 +1,26 @@
 # Flashcards JSON (Vanilla)
 
-Application web simple (HTML/CSS/JS) permettant d'importer des jeux de cartes (question/réponse) au format JSON et d'étudier via des flashcards.
+Application web simple (HTML/CSS/JS) permettant d'importer des jeux de cartes (question/réponse) ou des questionnaires QCM au format JSON et d'étudier via deux modes : Flashcards & QCM.
 
 ## Fonctionnalités
 
 - Import via fichier ou collage JSON
 - Stockage local (`localStorage`) multi-decks
-- Flip carte au clic / espace / entrée
+- Deux types de deck : Flashcards ou QCM
+- Flip carte (mode flashcards) au clic / espace / entrée
 - Navigation suivante / précédente + flèches clavier
 - Option mélange (shuffle)
 - Export d'un deck courant
 - Suppression deck / reset progression
-- Support de plusieurs formats JSON
+- Support de plusieurs formats JSON (voir ci-dessous)
 - Thème "révision" (look fiche, surlignage, barre de progression)
-- Mode plein écran automatique lors du chargement d'un deck (focus sur la carte)
-- Bouton Random (carte aléatoire différente) & Retour à la sélection
+- Mode plein écran automatique lors du chargement d'un deck (focus sur l'étude)
+- Bouton Random (sélection aléatoire) & Retour à la sélection
+- Rendu QCM avec validation, multi-réponses, feedback visuel
 
 ## Formats JSON acceptés
+
+### 1. Mode Flashcards
 
 ```jsonc
 // 1. Tableau d'objets
@@ -38,6 +42,32 @@ Application web simple (HTML/CSS/JS) permettant d'importer des jeux de cartes (q
 
 `reponse` ou `réponse` sont acceptés.
 
+### 2. Mode QCM
+
+Format attendu : tableau d'objets.
+
+```json
+[
+  {
+    "question": "Capital de la France ?",
+    "reponses": ["Paris", "Lyon", "Rome"],
+    "reponses_correctes": [0]
+  },
+  {
+    "question": "Sélectionner des langages compilés",
+    "reponses": ["C", "Python", "Go", "Rust"],
+    "reponses_correctes": [0, 2, 3]
+  }
+]
+```
+
+Règles :
+
+- `reponses` : minimum 2 entrées.
+- `reponses_correctes` : tableau d'indices (>=1 élément) pointant dans `reponses`.
+- Multi-réponses supporté (checkbox). Une seule réponse -> radio.
+- Les indices invalides ou JSON mal structuré sont rejetés avec un message d'erreur.
+
 ## Utilisation
 
 1. Ouvrir `index.html` dans un navigateur moderne (offline possible).
@@ -50,10 +80,12 @@ Application web simple (HTML/CSS/JS) permettant d'importer des jeux de cartes (q
 
 ## Raccourcis
 
-- Espace / Entrée : retourner la carte
+- Espace / Entrée : retourner la carte (flashcards uniquement)
 - Flèche gauche/droite : navigation
-- R : carte aléatoire
+- R : élément aléatoire
 - Esc : quitter le mode plein écran (retour à la sélection)
+- V : valider un QCM (mode QCM)
+- N : question suivante après validation (mode QCM)
 
 ## Persistance
 
@@ -65,7 +97,12 @@ Le thème utilise une palette inspirée des surligneurs (jaune/orange) et un eff
 
 ## Mode plein écran (Study Mode)
 
-Lorsqu'un deck est chargé, l'interface bascule en mode étude : seuls la carte, la navigation, la progression et les contrôles Random / Retour sont visibles. Sur mobile, la carte occupe la quasi-totalité de l'écran (utilise `100dvh` pour une meilleure gestion des barres système). Le bouton Retour ou la touche Esc ramènent à la gestion des decks.
+Lorsqu'un deck est chargé, l'interface bascule en mode étude :
+
+- Flashcards : carte recto/verso + navigation + progression + Random / Retour
+- QCM : question + réponses (radio ou checkbox) + bouton de validation + feedback + navigation
+
+Sur mobile, l'interface occupe la quasi-totalité de l'écran. Le bouton Retour ou la touche Esc ramènent à la gestion des decks.
 
 ## Améliorations possibles
 
@@ -73,6 +110,7 @@ Lorsqu'un deck est chargé, l'interface bascule en mode étude : seuls la carte,
 - Statistiques de révision espacée
 - Import/Export complet (zip)
 - Thèmes personnalisés / mode clair automatique
+- Persistance des réponses/score QCM (actuellement non stocké)
 
 ---
 

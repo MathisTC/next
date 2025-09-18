@@ -19,12 +19,19 @@
           <input id="deck-name" name="deckName" placeholder="ex: psycho sociale (jsp)" required />
         </div>
         <div class="field-group">
+          <label for="deck-type">Type</label>
+          <select id="deck-type" name="deckType">
+            <option value="qcm" selected>QCM</option>
+            <option value="flashcards">Flashcards</option>
+          </select>
+        </div>
+        <div class="field-group">
           <label for="json-file">Fichier JSON</label>
           <input id="json-file" name="jsonFile" type="file" accept="application/json" />
         </div>
         <div class="field-group">
           <label for="json-text">Ou coller le JSON</label>
-          <textarea id="json-text" name="jsonText" placeholder='[{"question":"Q?","reponse":"R"}] ou {"Q?":"R"}'></textarea>
+          <textarea id="json-text" name="jsonText" data-placeholder-flashcards='[{"question":"Q?","reponse":"R"}] ou {"Q?":"R"}' data-placeholder-qcm='[{"question":"Capital ?","reponses":["Paris","Lyon","Rome"],"reponses_correctes":[0]}]' placeholder='[{"question":"Q?","reponse":"R"}] ou {"Q?":"R"}'></textarea>
         </div>
         <div class="actions">
           <button type="submit">Enregistrer le deck</button>
@@ -66,6 +73,14 @@
         <button id="prev-btn" disabled>◀ Précédent</button>
         <div id="progress">0 / 0</div>
         <button id="next-btn" disabled>Suivant ▶</button>
+      </div>
+      <div id="qcm-container" class="qcm hidden" aria-live="polite" aria-atomic="true">
+        <div class="qcm-question" id="qcm-question">(QCM) Aucune question</div>
+        <form id="qcm-form" class="qcm-choices" aria-describedby="qcm-feedback"></form>
+        <div class="qcm-actions">
+          <button id="qcm-validate" class="secondary" disabled>Valider (V)</button>
+          <div id="qcm-feedback" class="qcm-feedback" aria-live="polite"></div>
+        </div>
       </div>
       <div class="study-extra-controls">
         <button id="random-btn" class="secondary" title="Carte aléatoire (R)" disabled>🔀 Random</button>
